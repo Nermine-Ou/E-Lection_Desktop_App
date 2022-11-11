@@ -1,8 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
-
+#if
 //Polling Station Management
-struct poll_stat
+typedef struct 
 {
 char IDstat[10];
 char IDag[10];
@@ -15,9 +15,9 @@ int clm;
 int newstat;
 int oldstat;
 int yes;
-};
-int addpollingstation( char * filename , pollingstation p );
-int modifypollingstation(int id, pollingstation new, char * filename);
+}poll_stat;
+int addpollingstation( char * filename , poll_stat p );
+int modifypollingstation(int id, poll_stat new, char * filename);
 int deletepollingstation(int id, char * filename);
 int searchpollingstation( char * filename,int id);
 
