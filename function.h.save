@@ -1,0 +1,23 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+//election management
+
+struct add_election{
+
+int ID_addelec;
+int day_addelec;
+int month_addelec;
+int year_addelec;
+char muni_addelec;
+int NPs_addelec;
+int NH_addelec;
+int OH_addelec;
+int CH_addelec;
+char save_addelec;
+char sub_addelec;
+};
+typedef struct add_election addelec;
+
+
