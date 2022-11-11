@@ -83,7 +83,7 @@ rename("aux.txt", filename);
 
 int searchpollingstation( char * filename,int id)
 {
-poll_statstation p; int tr=0;
+poll_stat p; int tr=0;
     FILE * f=fopen(filename , "r");
  if(f!=NULL )
     {
