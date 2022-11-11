@@ -7,9 +7,9 @@ int main()
 {
 poll_stat new;
 
-pollingstation s1={'123','8',4,200,1,12,1};
-pollingstation s2={'102','9',3,190,0,1,1};
-pollingstation s3={'201','5',3,919,1,5,1};
+poll_stat s1={'123','8',4,200,1,12,1};
+poll_stat s2={'102','9',3,190,0,1,1};
+poll_stat s3={'201','5',3,919,1,5,1};
 int x;
 
 printf("add a new pollingstation ");
@@ -18,12 +18,12 @@ if(x==1)
         printf("\n add polingstation with succees!!!!!!!!!");
     else printf("\nerror add");
 
- s2=searchpollingstation("filepollingstation.txt",10);
-    if(s2.id=='-1')
+ x=searchpollingstation("filepollingstation.txt",'10');
+    if(x=='-1')
     {
         printf("does not exist");
     }
-    else if (s2.id!='-1')
+    else if (x!='-1')
      {
          printf("existe!!!\n");
     }
@@ -37,12 +37,12 @@ if(x==1)
     if(x==-1)
         printf("\ndeleting of pollingstaion done with succes");
     else printf("\nerror of deleting");
-     s3=searchpollingstation("filepollingstation",1);
-    if(s3!=1)
+     x=searchpollingstation("filepollingstation",'1');
+    if(x!=1)
     {
         printf("does not exist");
     }
-    else if (s3==1)
+    else if (x==1)
      {
          printf("existe!!!\n");
     }
