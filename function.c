@@ -13,7 +13,7 @@ int addpollingstation( char * filename ,poll_stat new)
     {
 while(fscanf(f,"%s %s %d %d %d %d %d %d %d %d %d \n",p.IDstat,p.IDag,p.mun,p.cap,p.oph ,p.opm,p.clh,p.clm,p.newstat,p.oldstat,p.yes);!=EOF)
 {
-if(p.id!=id)
+if(strcmp(p.id,id))
         {fprintf(f2,"%s %s %d %d %d %d %d %d %d %d %d \n",p.IDstat,p.IDag,p.mun,p.cap,p.oph ,p.opm,p.clh,p.clm,p.newstat,p.oldstat,p.yes);}
 else
     {
@@ -31,6 +31,7 @@ fclose(f2);
 int modifypollingstation(int id, poll_stat new, char * filename)
 {
 poll_stat p;
+int x=0;
     FILE * f=fopen(filename, "r");
     FILE * f2 =fopen("aux.txt", "w");
     if(f==NULL || f2==NULL)
@@ -39,24 +40,24 @@ else
     {
 while(fscanf(f,"%s %s %d %d %d %d %d %d %d %d %d \n",p.IDstat,p.IDag,p.mun,p.cap,p.oph ,p.opm,p.clh,p.clm,p.newstat,p.oldstat,p.yes)!=EOF)
 {
-if(p.id!=id)
+if(strcmp(p.id,id))
         fprintf(f2,"%s %s %d %d %d %d %d %d %d %d %d \n",p.IDstat,p.IDag,p.mun,p.cap,p.oph ,p.opm,p.clh,p.clm,p.newstat,p.oldstat,p.yes);
 else
 
   fprintf(f2,"%s %s %d %d %d %d %d %d %d %d %d \n",new.IDstat,new.IDag,new.mun,new.cap,new.oph ,new.opm,new.clh,new.clm,new.newstat,new.oldstat,new.yes);
-
+  x=1;
 }
         fclose(f);
         fclose(f2);
 remove(filename);
 rename("aux.txt", filename);
-        return 1;
+        return x;
     }
 
 }
 
 int deletepollingstation(int id, char * filename)
-{ int tr;
+{ int tr=0;
 poll_stat p;
     FILE * f=fopen(filename, "r");
     FILE * f2 =fopen("aux.txt", "w");
@@ -66,7 +67,7 @@ else
     {
 while(fscanf(f,"%s %s %d %d %d %d %d %d %d %d %d \n",p.IDstat,p.IDag,p.mun,p.cap,p.oph ,p.opm,p.clh,p.clm,p.newstat,p.oldstat,p.yes)!=EOF)
 {
-if(p.id!=id)
+if(!strcmp(p.id,id))
         fprintf(f2,"%s %s %d %d %d %d %d %d %d %d %d \n",p.IDstat,p.IDag,p.mun,p.cap,p.oph ,p.opm,p.clh,p.clm,p.newstat,p.oldstat,p.yes);
 else
 
@@ -76,7 +77,7 @@ tr=-1;
         fclose(f2);
 remove(filename);
 rename("aux.txt", filename);
-        return 1;
+        return tr;
     }
 }
 
@@ -87,13 +88,12 @@ poll_statstation p; int tr=0;
  if(f!=NULL )
     {
 while(fscanf(f,"%s %s %d %d %d %d %d %d %d %d %d \n",p.IDstat,p.IDag,p.mun,p.cap,p.oph ,p.opm,p.clh,p.clm,p.newstat,p.oldstat,p.yes)!=EOF && tr==0)
-{if(id==p.id)
-tr=1;
+{if(strcmp(id,p.id)
+{  tr=1;}
 }
-}
-if(tr==0)
-p.id=-1;
-return p;
+else
+{};
+return tr;
 
 }
 
