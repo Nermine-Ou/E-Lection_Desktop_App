@@ -1,5 +1,5 @@
 #include<stdlib.h>
-#include"file.h"
+#include"functionlist.h"
 #include<stdio.h>
 
 int addelect( char * filename,electoral e)
@@ -15,7 +15,7 @@ int addelect( char * filename,electoral e)
         return 0;
 }
 
-int modifyelect(int ID, electoral new, char * filename)
+int modifyelect(char ID[10], electoral new, char * filename)
 {
     electoral e;
     FILE * f=fopen(filename, "r");
@@ -26,9 +26,9 @@ int modifyelect(int ID, electoral new, char * filename)
     }
     else
     {
-        while(fscanf(f,"%s %d %d %d %d %d %s %d %s %s %s %d\n",&e.ID,e.muncipality,e.day,e.month,e.year,e.orientation,e.IDH,e.pollingstation,e.IDC1,e.IDC2,e.IDC3,e.submit)!=EOF)
+        while(fscanf(f,"%s %d %d %d %d %d %s %d %s %s %s %d\n",e.ID,&e.muncipality,&e.day,&e.month,&e.year,&e.orientation,e.IDH,&e.pollingstation,e.IDC1,e.IDC2,e.IDC3,&e.submit)!=EOF)
         {
-            if(e.ID!=ID)
+            if(strcmp(e.ID,ID)==0)
                 fprintf(f2,"%s %d %d %d %d %d %s %d %s %s %s %d\n",e.ID,e.muncipality,e.day,e.month,e.year,e.orientation,e.IDH,e.pollingstation,e.IDC1,e.IDC2,e.IDC3,e.submit);
             else
 
@@ -44,7 +44,7 @@ int modifyelect(int ID, electoral new, char * filename)
 
 }
 
-int deleteelect(int id, char * filename)
+int deleteelect(char id[10], char * filename)
 {
     electoral e;
     FILE * f=fopen(filename, "r");
@@ -53,9 +53,9 @@ int deleteelect(int id, char * filename)
         return 0;
     else
     {
-        while(fscanf(f,"%s %d %d %d %d %d %s %d %s %s %s %d\n",é=&e.ID,e.muncipality,e.day,e.month,e.year,e.orientation,e.IDH,e.pollingstation,e.IDC1,e.IDC2,e.IDC3,e.submit)!=EOF)
+        while(fscanf(f,"%s %d %d %d %d %d %s %d %s %s %s %d\n",e.ID,&e.muncipality,&e.day,&e.month,&e.year,&e.orientation,e.IDH,&e.pollingstation,e.IDC1,e.IDC2,e.IDC3,&e.submit)!=EOF)
         {
-            if(e.ID!=ID)
+            if(strcmp(e.ID,id)==0)
                 fprintf(f2,"%s %d %d %d %d %d %s %d %s %s %s %d\n",e.ID,e.muncipality,e.day,e.month,e.year,e.orientation,e.IDH,e.pollingstation,e.IDC1,e.IDC2,e.IDC3,e.submit);
             else
 
@@ -69,21 +69,21 @@ int deleteelect(int id, char * filename)
     }
 }
 
-electoral searchelect( char * filename,int ID)
+electoral searchelect( char * filename,char ID[10])
 {
     electoral e;
     int tr=0;
     FILE * f=fopen(filename, "r");
     if(f!=NULL )
     {
-        while(fscanf(f,"%s %d %d %d %d %d %s %d %s %s %s %d\n",&e.ID,&e.muncipality,&e.day,&e.month,&e.year,&e.orientation,&e.IDH,&e.pollingstation,&e.IDC1,&e.IDC2,&e.IDC3,&e.submit)!=EOF && tr==0)
+        while(fscanf(f,"%s %d %d %d %d %d %s %d %s %s %s %d\n",e.ID,&e.muncipality,&e.day,&e.month,&e.year,&e.orientation,e.IDH,&e.pollingstation,e.IDC1,e.IDC2,e.IDC3,&e.submit)!=EOF && tr==0)
         {
-            if(ID==e.ID)
+           if(strcmp(ID,e.ID)==0)
                 tr=1;
         }
     }
     if(tr==0)
-        e.ID=-1;
+        e.ID[0]=-1;
     return e;
 
 }

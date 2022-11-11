@@ -10,15 +10,15 @@ int year;
 int orientation;
 char IDH[10];
 int pollingstation;
-char IDC1,IDC2,IDC3[10];
+char IDC1[10],IDC2[10],IDC3[10];
 int submit[10];
 }electoral;
 
 
 int addelect( char * filename , electoral e );
-int modifyelect(int ID, electoral new, char * filename);
-int deleteelect(int ID, char * filename);
-electoral searchelect( char * filename,int id);
+int modifyelect(char ID[10], electoral new, char * filename);
+int deleteelect(char ID[10], char * filename);
+electoral searchelect( char * filename,char id[10]);
 
 
 #endif // FUNCTION_H_INCLUDED
