@@ -60,7 +60,7 @@ moy_age=agemoyen2("fileUsers.txt",R );
 
 
   
-
+return 0;
 }
 
 #endif 

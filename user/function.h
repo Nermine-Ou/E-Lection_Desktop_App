@@ -19,6 +19,7 @@ int pol_sta;
 typedef struct{
 char cin[15] ;
 int IdList;
+char password ;
 } vote ;
 
 int add_user( char * filename , user u );

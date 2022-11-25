@@ -121,7 +121,7 @@ void TPHF( char *fileUsers, float *f, float  *h)
 
 float agemoyen2(char * fileUsers, int R ) //R=role
 {   user p ;
-    int x,i,sum=0;
+    int x,i,sum=0; // sum of ages 
     float moy;
     x=0; // age
     i=0; // number of R
@@ -153,7 +153,7 @@ int add_vote( char * filename , vote new )
     FILE * f=fopen(filename,"a");
     if(f!=NULL)
     {
-        fprintf(f,"%s %d\n",new.cin,new.IdList);
+        fprintf(f,"%s %d\n",new.cin,new.IdList);  // cryptage ??
         fclose(f);
 
         return 1;
