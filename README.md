@@ -1,4 +1,4 @@
-# SwiftPoll Desktop App
+# E-Lection Desktop App
 
 Prioritized with my team members the digitization of the voting process by developing a desktop municipality tunisian election application in Ubuntu using the C language. 
 
